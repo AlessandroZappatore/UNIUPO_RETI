@@ -9,7 +9,6 @@
 
 int main(int argc, char *argv[])
 {
-
     int simpleSocket = 0;
     int simplePort = 0;
     int returnStatus = 0;
@@ -65,12 +64,9 @@ int main(int argc, char *argv[])
 
     int x = 5;
     char array[][10] = {"prima", "seconda", "terza", "quarta", "quinta"};
-
     for (int i = 0; i < x; i++)
     {
-
         write(simpleSocket, array[i], strlen(array[i]));
-
         returnStatus = read(simpleSocket, buffer, sizeof(buffer));
 
         if (returnStatus > 0)

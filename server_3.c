@@ -93,9 +93,17 @@ int main(int argc, char *argv[])
 
         /* handle the new connection request  */
         char buffer[1024];
-        returnStatus = read(simpleSocket, buffer, sizeof(buffer));
-        /* write out our message to the client */
-        write(simpleChildSocket, buffer, strlen(buffer));
+
+        for (int i = 0; i < 5; i++)
+        {
+            returnStatus = read(simpleSocket, buffer, sizeof(buffer));
+
+            if (returnStatus > 0)
+            {
+                write(simpleChildSocket, buffer, strlen(buffer));
+            }
+        }
+
         close(simpleChildSocket);
     }
 
