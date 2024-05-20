@@ -96,7 +96,9 @@ int main(int argc, char *argv[])
 
         for (int i = 0; i < 5; i++)
         {
-            returnStatus = read(simpleSocket, buffer, sizeof(buffer));
+            memset(buffer, '\0', sizeof(buffer));
+            returnStatus = read(simpleChildSocket, buffer, sizeof(buffer));
+            printf("status: %d, %s\n", returnStatus, buffer);
 
             if (returnStatus > 0)
             {

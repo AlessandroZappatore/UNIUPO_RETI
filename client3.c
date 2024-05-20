@@ -66,12 +66,14 @@ int main(int argc, char *argv[])
     char array[][10] = {"prima", "seconda", "terza", "quarta", "quinta"};
     for (int i = 0; i < x; i++)
     {
+        memset(buffer, '\0', sizeof(buffer));
+
         write(simpleSocket, array[i], strlen(array[i]));
         returnStatus = read(simpleSocket, buffer, sizeof(buffer));
 
         if (returnStatus > 0)
         {
-            printf("%d: %s", returnStatus, buffer);
+            printf("%d: %s\n", returnStatus, buffer);
         }
         else
         {
