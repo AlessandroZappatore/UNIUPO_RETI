@@ -18,7 +18,6 @@ int main(int argc, char *argv[])
 
     if (1 != argc)
     {
-
         fprintf(stderr, "Usage: %s <port>\n", argv[0]);
         exit(1);
     }
@@ -27,7 +26,6 @@ int main(int argc, char *argv[])
 
     if (simpleSocket == -1)
     {
-
         fprintf(stderr, "Could not create a socket!\n");
         exit(1);
     }
@@ -41,7 +39,6 @@ int main(int argc, char *argv[])
     simpleServer.sin_addr.s_addr = htonl(INADDR_ANY);
     simpleServer.sin_port = htons(simplePort);
 
-    /*  bind to the address and port with our socket  */
     returnStatus = bind(simpleSocket, (struct sockaddr *)&simpleServer, sizeof(simpleServer));
 
     if (returnStatus == 0)
@@ -57,7 +54,6 @@ int main(int argc, char *argv[])
 
     while (1)
     {
-
         socklen_t clientNameLength = sizeof(clientName);
         char buffer[1024];
 

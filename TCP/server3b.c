@@ -92,8 +92,8 @@ int main(int argc, char *argv[])
         /* handle the new connection request  */
         char buffer[1024];
         int iteractions; 
-        read(simpleChildSocket, &iteractions, sizeof(iteractions));
-        
+        read(simpleChildSocket, &iteractions, sizeof(iteractions)); //Da controllare Big Endian/Little Endian
+        iteractions=htons(iteractions);
 
         for (int i = 0; i < iteractions; i++)
         {

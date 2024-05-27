@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    write(simpleSocket, &x, sizeof(x));
+    write(simpleSocket, &x, sizeof(x)); //Se mandiamo il numero come stringa posso usare netcat
     for (int i = 0; i < x; i++)
     {
         memset(buffer, '\0', sizeof(buffer));
@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
         returnStatus = read(simpleSocket, buffer, sizeof(buffer) - 1);
         if (returnStatus > 0)
         {
-            buffer[returnStatus] = '\0'; // Ensure null-termination
+            buffer[returnStatus] = '\0';
             printf("%d: %s\n", returnStatus, buffer);
         }
         else

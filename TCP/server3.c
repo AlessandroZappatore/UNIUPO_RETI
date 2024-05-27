@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     }
 
     /* retrieve the port number for listening */
-    simplePort = 12345;
+    simplePort = 12346;
 
     /* setup the address structure */
     /* use INADDR_ANY to bind to all local addresses  */
@@ -94,16 +94,13 @@ int main(int argc, char *argv[])
         /* handle the new connection request  */
         char buffer[1024];
 
-        for (int i = 0; i < 5; i++)
-        {
-            memset(buffer, '\0', sizeof(buffer));
-            returnStatus = read(simpleChildSocket, buffer, sizeof(buffer));
-            printf("status: %d, %s\n", returnStatus, buffer);
+        memset(buffer, '\0', sizeof(buffer));
+        returnStatus = read(simpleChildSocket, buffer, sizeof(buffer));
+        printf("status: %d, %s\n", returnStatus, buffer);
 
-            if (returnStatus > 0)
-            {
-                write(simpleChildSocket, buffer, strlen(buffer));
-            }
+        if (returnStatus > 0)
+        {
+            write(simpleChildSocket, buffer, strlen(buffer));
         }
 
         close(simpleChildSocket);

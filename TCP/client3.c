@@ -23,21 +23,9 @@ int main(int argc, char *argv[])
     }
 
     /* create a streaming socket      */
-    simpleSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-
-    if (simpleSocket == -1)
-    {
-
-        fprintf(stderr, "Could not create a socket!\n");
-        exit(1);
-    }
-    else
-    {
-        fprintf(stderr, "Socket created!\n");
-    }
 
     /* retrieve the port number for connecting */
-    simplePort = 12345;
+    simplePort = 12346;
 
     /* setup the address structure */
     /* use the IP address sent as an argument for the server address  */
@@ -49,24 +37,30 @@ int main(int argc, char *argv[])
     simpleServer.sin_port = htons(simplePort);
 
     /*  connect to the address and port with our socket  */
-    returnStatus = connect(simpleSocket, (struct sockaddr *)&simpleServer, sizeof(simpleServer));
-
-    if (returnStatus == 0)
-    {
-        fprintf(stderr, "Connect successful!\n");
-    }
-    else
-    {
-        fprintf(stderr, "Could not connect to address!\n");
-        close(simpleSocket);
-        exit(1);
-    }
 
     int x = 5;
     char array[][10] = {"prima", "seconda", "terza", "quarta", "quinta"};
     for (int i = 0; i < x; i++)
     {
         memset(buffer, '\0', sizeof(buffer));
+
+        simpleSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+        if (simpleSocket == -1)
+        {
+
+            fprintf(stderr, "Could not create a socket!\n");
+            exit(1);
+        }
+
+        returnStatus = connect(simpleSocket, (struct sockaddr *)&simpleServer, sizeof(simpleServer));
+
+        if (!returnStatus == 0)
+        {
+            fprintf(stderr, "Could not connect to address!\n");
+            close(simpleSocket);
+            exit(1);
+        }
 
         write(simpleSocket, array[i], strlen(array[i]));
         returnStatus = read(simpleSocket, buffer, sizeof(buffer));
@@ -79,10 +73,9 @@ int main(int argc, char *argv[])
         {
             fprintf(stderr, "Return Status = %d \n", returnStatus);
         }
+
+        close(simpleSocket);
     }
 
-    /* get the message from the server   */
-
-    close(simpleSocket);
     return 0;
 }
