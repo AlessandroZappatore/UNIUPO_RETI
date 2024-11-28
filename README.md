@@ -9,5 +9,8 @@ Questo repository contiene gli **esercizi di laboratorio** svolti durante il cor
 ### 📂 Contenuto:  
 - 🖧 **Esercizi su TCP e UDP**: esercizi pratici relativi alla parte di laboratorio sui protocolli di rete TCP e UDP  
 
-### 🔗 Link utili:  
-- **Teoria del corso**: [Appunti di Reti](https://github.com/AlessandroZappatore/UNIUPO_APPUNTI/tree/556925c0e52bc46600d768aa359082963d7393e7/SECONDO%20ANNO/Reti)
+---
+
+### 📜 Teoria:  
+La parte teorica del corso può essere trovata nel repository degli appunti:  
+- [Appunti di Reti](https://github.com/AlessandroZappatore/UNIUPO_APPUNTI/tree/556925c0e52bc46600d768aa359082963d7393e7/SECONDO%20ANNO/Reti)
